@@ -1,0 +1,12 @@
+{
+  "permissions": [
+    {
+      "name": "int_all",
+      "expire": "2022-12-12"
+    },
+    {
+      "name": "cert_all",
+      "expire": "2022-12-13"
+    }
+  ]
+}

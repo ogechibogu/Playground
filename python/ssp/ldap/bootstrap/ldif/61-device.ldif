@@ -1,0 +1,9 @@
+dn: cn=test-device,ou=krk,ou=devices,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: device
+objectClass: ieee802Device
+objectClass: ipHost
+objectClass: top
+cn: test-device
+ipHostNumber: 192.168.225.21
+macAddress: c0:3f:d5:61:8a:9f

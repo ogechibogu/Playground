@@ -1,0 +1,3 @@
+{
+  "config": "client\nauth-user-pass\nauth-retry interact\ndev tun\nproto udp\nremote test.srinternal.net 11940\nresolv-retry infinite\nnobind\npersist-key\npersist-tun\ncompress lzo\nverb 3\n<ca>\n</ca>\n<cert>\n</cert>\n<key>\n</key>"
+}

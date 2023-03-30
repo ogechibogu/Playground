@@ -1,0 +1,48 @@
+dn: olcOverlay={0}memberof,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: modify
+replace: olcMemberOfGroupOC
+olcMemberOfGroupOC: groupOfMembers
+-
+replace: olcMemberOfMemberAD
+olcMemberOfMemberAD: member
+
+# Load unique module
+dn: cn=module{0},cn=config
+changetype: modify
+add: olcModuleLoad
+olcModuleLoad: unique
+
+# Backend unique overlay
+dn: olcOverlay={2}unique,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: add
+objectClass: olcUniqueConfig
+objectClass: olcOverlayConfig
+objectClass: olcConfig
+olcOverlay: {2}unique
+olcUniqueURI: ldap:///ou=groups,{{ LDAP_BASE_DN }}?gidNumber?sub?
+olcUniqueURI: ldap:///?uid?sub?
+olcUniqueURI: ldap:///?uidNumber?sub?
+olcUniqueURI: ldap:///?macAddress?sub?
+
+# Load constraint module
+dn: cn=module{0},cn=config
+changetype: modify
+add: olcModuleLoad
+olcModuleLoad: constraint
+
+# Backend constraint overlay
+dn: olcOverlay={3}constraint,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: add
+objectClass: olcConstraintConfig
+objectClass: olcOverlayConfig
+olcOverlay: {3}constraint
+olcConstraintAttribute: cn,uid set "this/uid & this/cn" restrict="ldap:///??sub?(objectClass=inetOrgPerson)"
+
+#Setup ACL
+dn: olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+changetype: modify
+delete: olcAccess
+-
+add: olcAccess
+olcAccess: to attrs=userPassword,shadowLastChange,sshPublicKey,macAddress by self write by group/groupOfMembers/member="cn=devops,ou=groups,{{ LDAP_BASE_DN }}" write by dn.children="ou=service,ou=users,{{ LDAP_BASE_DN }}" read by anonymous auth by * none
+olcAccess: to * by group/groupOfMembers/member="cn=devops,ou=groups,{{ LDAP_BASE_DN }}" write by users read

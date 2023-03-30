@@ -1,0 +1,87 @@
+dn: ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+dn: cn=users,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: groupOfMembers
+objectClass: posixGroup
+objectClass: top
+cn: users
+gidNumber: 10000
+
+dn: cn=devops,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: groupOfMembers
+objectClass: posixGroup
+objectClass: top
+cn: devops
+gidNumber: 10001
+
+dn: cn=access_vpn_ops,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: groupOfMembers
+objectClass: posixGroup
+objectClass: top
+cn: access_vpn_ops
+gidNumber: 10003
+
+dn: cn=int_all,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: groupOfMembers
+objectClass: posixGroup
+objectClass: top
+cn: int_all
+gidNumber: 10004
+
+dn: cn=access_vpn_test,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: groupOfMembers
+objectClass: posixGroup
+objectClass: top
+cn: access_vpn_test
+gidNumber: 10005
+
+dn: ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: users
+
+dn: ou=krk,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: krk
+
+dn: ou=sf,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: sf
+
+dn: ou=service,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: service
+
+dn: ou=devices,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: devices
+
+dn: ou=krk,ou=devices,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: krk
+
+dn: ou=sf,ou=devices,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: sf

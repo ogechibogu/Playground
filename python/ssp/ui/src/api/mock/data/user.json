@@ -1,0 +1,40 @@
+{
+  "gidNumber": 1000,
+  "objectClass": [
+    "inetOrgPerson",
+    "organizationalPerson",
+    "person",
+    "top",
+    "posixAccount",
+    "ieee802Device",
+    "ldapPublicKey"
+  ],
+  "uidNumber": 20002,
+  "uid": [
+    "sr-user"
+  ],
+  "homeDirectory": "/home/test",
+  "sn": [
+    "Test-User"
+  ],
+  "givenName": [
+    "User"
+  ],
+  "displayName": "User Test-Admin",
+  "mail": [
+    "u.test-user@smartrecruiters.com"
+  ],
+  "cn": [
+    "sr-user"
+  ],
+  "description": [
+    "{\"group\": \"cn=int_all,ou=groups,dc=srinternal,dc=net\", \"expire\": \"2022-12-12\"}"
+  ],
+  "userPassword": [
+    "{SSHA}s+SsCTrkoYTW5j00WCZi8owB8x88e3CH"
+  ],
+  "memberOf": [
+    "cn=access_vpn_ops,ou=groups,dc=srinternal,dc=net",
+    "cn=int_all,ou=groups,dc=srinternal,dc=net"
+  ]
+}

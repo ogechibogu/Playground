@@ -1,0 +1,22 @@
+{
+  "vpns": [
+    "access_vpn_ops",
+    "access_vpn_perf",
+    "access_vpn_fran",
+    "access_vpn_cert",
+    "access_vpn_int",
+    "access_vpn-secure_fran",
+    "access_vpn_glob-prod-fran",
+    "access_vpn_prog-ohio",
+    "access_vpn_cert-fran",
+    "access_vpn_cert-ohio",
+    "access_vpn_glob-cert-fran",
+    "access_vpn_glob-int-irl",
+    "access_vpn_int-ohio",
+    "access_vpn_mig",
+    "access_vpn_integrations",
+    "access_vpn_siem",
+    "access_vpn_perf-fran",
+    "access_vpn_glob-perf-fran"
+  ]
+}

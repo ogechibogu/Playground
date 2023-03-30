@@ -1,0 +1,13 @@
+html,
+body {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.sr-black {
+  color: #10181f
+}
+
+.sr-dark2 {
+  color: #3e3e46
+}

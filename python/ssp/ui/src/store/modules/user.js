@@ -1,0 +1,48 @@
+import {USER_REQUEST, USER_ERROR, USER_SUCCESS} from '../actions/user'
+import Vue from 'vue'
+import {AUTH_LOGOUT} from '../actions/auth'
+import client from 'api-client'
+
+const state = {status: '', profile: {}};
+
+const getters = {
+  getProfile: state => state.profile,
+  isProfileLoaded: state => !!state.profile.cn,
+};
+
+const actions = {
+  [USER_REQUEST]: ({commit, dispatch}) => {
+    commit(USER_REQUEST);
+    client.fetchUserData()
+      .then(response => {
+        commit(USER_SUCCESS, response)
+      })
+      .catch(err => {
+        commit(USER_ERROR);
+        dispatch(AUTH_LOGOUT)
+      })
+  },
+};
+
+const mutations = {
+  [USER_REQUEST]: (state) => {
+    state.status = 'loading'
+  },
+  [USER_SUCCESS]: (state, profile) => {
+    state.status = 'success';
+    Vue.set(state, 'profile', profile)
+  },
+  [USER_ERROR]: (state) => {
+    state.status = 'error'
+  },
+  [AUTH_LOGOUT]: (state) => {
+    state.profile = {}
+  }
+};
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations,
+}

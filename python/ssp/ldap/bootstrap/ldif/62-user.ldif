@@ -1,0 +1,72 @@
+#password: sr-admin123
+dn: cn=sr-admin,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+gidNumber: 1000
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: posixAccount
+objectClass: ieee802Device
+objectClass: ldapPublicKey
+uidNumber: 20001
+uid: sr-admin
+homeDirectory: /home/test
+sn: Test-Admin
+cn: sr-admin
+userPassword: {SSHA}DkQwfePW8BxI2/TdS0Yy/ibrDgIImU42
+
+dn: cn=devops,ou=groups,{{ LDAP_BASE_DN }}
+changetype: modify
+add: member
+member: cn=sr-admin,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+
+dn: cn=access_vpn_ops,ou=groups,{{ LDAP_BASE_DN }}
+changetype: modify
+add: member
+member: cn=sr-admin,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+
+#password: sr-user123
+dn: cn=sr-user,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+gidNumber: 1000
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: posixAccount
+objectClass: ieee802Device
+objectClass: ldapPublicKey
+uidNumber: 20002
+uid: sr-user
+homeDirectory: /home/test
+sn: Test-User
+givenName: User
+displayName: User Test-Admin
+mail: u.test-user@smartrecruiters.com
+cn: sr-user
+description: {"group": "cn=int_all,ou=groups,dc=srinternal,dc=net", "expire": "2022-12-12"}
+userPassword: {SSHA}s+SsCTrkoYTW5j00WCZi8owB8x88e3CH
+
+dn: cn=access_vpn_ops,ou=groups,{{ LDAP_BASE_DN }}
+changetype: modify
+add: member
+member: cn=sr-user,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+
+dn: cn=access_vpn_test,ou=groups,{{ LDAP_BASE_DN }}
+changetype: modify
+add: member
+member: cn=sr-user,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+
+dn: cn=int_all,ou=groups,{{ LDAP_BASE_DN }}
+changetype: modify
+add: member
+member: cn=sr-user,ou=krk,ou=users,{{ LDAP_BASE_DN }}
+
+#password: ssp123
+dn: cn=ssp,ou=service,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: ssp
+userPassword: {SSHA}eLOotXbyXYGPH5wzx2dFI0uVhpTJLW/I
