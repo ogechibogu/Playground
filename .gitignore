@@ -1,0 +1,38 @@
+# Ignore large binary files and archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.dmg
+
+# Ignore large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Ignore large datasets
+*.csv
+*.xls
+*.xlsx
+
+# Ignore large documents
+*.pdf
+*.docx
+*.pptx
+
+# Ignore large image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Ignore generated files
+/build/
+/dist/
+/node_modules/
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
