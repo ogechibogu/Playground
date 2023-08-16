@@ -1,0 +1,6 @@
+az = "eu-central-1a"
+subnet = "subnet-09a94b0d498b14400"
+vpc = "vpc-02ee2a02e85d350fe"
+stack_name = "lab"
+key_name = "ssh-key-lab"
+ami_ssm_parameter = "/aws/service/canonical/ubuntu/server/18.04/stable/current/amd64/hvm/ebs-gp2/ami-id"
