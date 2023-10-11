@@ -1,0 +1,9 @@
+{
+        "auths": {
+                "{{ nexus_cache_domain }}:9085":{
+                        "username":"kubernetes",
+                        "password":"{{ vault_nexus_kubernetes_user_password }}",
+                        "auth":"{{ ('kubernetes:' + vault_nexus_kubernetes_user_password) | b64encode }}"
+                }
+        }
+}

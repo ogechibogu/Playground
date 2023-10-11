@@ -1,0 +1,53 @@
+---
+- name: install necessary packages for Docker
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - apt-transport-https
+    - ca-certificates
+
+- name: add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: save the current Ubuntu release version into a variable
+  shell: lsb_release -cs
+  register: ubuntu_version
+
+- name: add Docker Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_version.stdout }} stable"
+    state: present
+
+- name: update apt packages
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install Docker
+  apt:
+    name: docker-ce
+    state: latest
+
+- name: install docker-compose  package
+  command: /usr/local/bin/pip install docker-compose
+
+- name: create docker dir
+  ansible.builtin.file:
+    path: /root/.docker
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: add config for local nexus-cache
+  ansible.builtin.template:
+    src: docker/config.json.j2
+    dest: /root/.docker/config.json
+    owner: root
+    group: root
+  when: nexus_cache_domain is defined
