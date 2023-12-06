@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: db
+  name: db
+spec:
+  containers:
+  - image: ogechibogu/state-capital:1.1
+    name: db
+    env:
+    - name: DB_HOST
+      value: "my-rds.cd4jfcdjvcbb.us-east-1.rds.amazonaws.com"
+    - name: DB_PORT
+      value: "5432"
+    - name: DB_NAME
+      value: "states"
+    - name: DB_USER
+      value: "postgres"
+    - name: DB_PASSWORD
+      value: "aer5wosn2as"
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
